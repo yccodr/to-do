@@ -1,0 +1,224 @@
+/* 
+  row
+*/
+.row {
+  background: #fff;
+}
+
+.row li {
+  border-bottom: 0.5px solid #ccc;
+}
+
+.row li:last-child {
+  border: none;
+}
+
+/* 
+  list
+*/
+.list-item {
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  padding: 0.5em 1em;
+  height: 2em;
+}
+
+.list-item > div {
+  visibility: hidden;
+}
+
+.list-item:hover > div,
+.list-item:hover > button,
+.list-item:hover > input[type="checkbox"],
+.list-item:focus-within > button,
+.list-item:focus-within > input[type="checkbox"],
+.list-item:focus-within > div {
+  visibility: visible;
+}
+
+/* 
+  input
+*/
+input {
+  font: 200 1.2em/2em "Sans", serif;
+  background-color: transparent;
+  border: 0;
+}
+
+input[type="text"] {
+  flex: auto;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="text"]:empty ~ btn {
+  visibility: hidden;
+}
+
+input[type="checkbox"] {
+  box-sizing: border-box;
+  height: 1em;
+  width: 1em;
+  margin: 0;
+  margin-right: 0.5em;
+  visibility: hidden;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+/* 
+  button
+*/
+.btn {
+  background: none;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.btn-outlined {
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-outlined:hover {
+  background-color: #eee;
+}
+
+.btn-round {
+  border-radius: 50%;
+}
+
+.btn-space {
+  width: 1.5em;
+}
+
+.btn-del {
+  border: 0;
+  background: url("../images/remove_circle_black_24dp.svg") 50% 50% no-repeat;
+  background-origin: border-box;
+  background-size: contain;
+  vertical-align: middle;
+  margin-left: 0.2em;
+  height: 1em;
+  width: 1em;
+  visibility: hidden;
+}
+
+/* 
+  palette
+*/
+.palette {
+  position: relative;
+}
+
+.palette .color-pick {
+  visibility: hidden;
+}
+
+.palette:focus-within .color-pick {
+  visibility: visible;
+}
+
+.color-pick {
+  position: absolute;
+  display: flex;
+  padding-left: 0.15em;
+  top: 2.5em;
+}
+
+.btn-color {
+  border: solid 0.5px #ccc;
+  padding: 0;
+  margin-left: 0.3em;
+  height: 1em;
+  width: 1em;
+}
+
+.btn-color:first-of-type {
+  margin-left: 0;
+}
+
+.btn-palette {
+  border: 0;
+  padding: 0;
+  background: url("../images/color_lens_black_24dp.svg") 50% 50% no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+  height: 1em;
+  width: 1em;
+}
+
+/* 
+  Color
+*/
+
+.color-default {
+  background-color: #fff;
+}
+
+.color-default:hover {
+  background-color: #eee;
+}
+
+.color-akebono {
+  background-color: #f19483;
+}
+
+.color-akebono:hover {
+  background-color: #f1a493;
+}
+
+.color-kanzo {
+  background-color: #fc9f4d;
+}
+
+.color-kanzo:hover {
+  background-color: #fcaf5d;
+}
+
+.color-hiwa {
+  background-color: #bec23f;
+}
+
+.color-hiwa:hover {
+  background-color: #ced24f;
+}
+
+.color-usuao {
+  background-color: #91b493;
+}
+
+.colur-usuao:hover {
+  background-color: #a1c4a3;
+}
+
+.color-mizu {
+  background-color: #81c7d4;
+}
+
+.color-mizu:hover {
+  background-color: #91d7e4;
+}
+
+.color-usu {
+  background-color: #b28fce;
+}
+
+.color-usu:hover {
+  background-color: #c29fde;
+}
+
+.color-shironezumi {
+  background-color: #bdc0ba;
+}
+
+.color-shironezumi:hover {
+  background-color: #cdd0ca;
+}
