@@ -1,0 +1,98 @@
+/* containers */
+.todo-list {
+  display: grid;
+  max-width: 600px;
+  margin: 1.5em auto;
+}
+
+/* list */
+li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* inputs */
+input {
+  font: 200 1.5em/2em "Sans", serif;
+  border: none;
+  outline: none;
+  margin-left: 0.5em;
+  height: 100%;
+}
+
+/* checkbox */
+[type="checkbox"] {
+  display: none;
+}
+
+.checkbox {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+input[type="checkbox"]:checked ~ .checkbox {
+  background-color: var(--bg-color-checkbox);
+}
+
+/* text input */
+[type="text"] {
+  flex: auto;
+}
+
+/* color picker */
+.color-picker {
+  position: relative;
+  display: flex;
+  width: 1.5em;
+  height: 2em;
+}
+
+.color-picker > label {
+  background: url("../img/color_lens_black_24dp.svg") no-repeat center;
+  width: 1.5em;
+  height: auto;
+}
+
+.color-picker > div {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  overflow: hidden;
+  opacity: 0;
+  max-width: 0;
+  left: -8px;
+  padding: 5px 8px;
+  border: 0.5px solid gray;
+  border-radius: 2em;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.color-picker:hover > div {
+  opacity: 100;
+  max-width: 188px;
+}
+
+.color-picker button {
+  border: 0.5px solid gray;
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 4px;
+}
+
+.color-picker button:last-of-type {
+  margin: 0;
+}
+
+/* del button */
+.delBtn {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.6em;
+}

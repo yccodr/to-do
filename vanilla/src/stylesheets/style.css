@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -87,7 +87,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  font-size: 16px;
   font: inherit;
   vertical-align: baseline;
 }
@@ -126,29 +126,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-/* 
-  typography
-*/
-body {
-  font: 300 1.2em/2em "Sans", serif;
-}
-
-/* 
-  container
-*/
-.container {
-  display: grid;
-  max-width: 600px;
-  margin: auto;
-  padding-top: 16px;
-}
-
-/* 
-  page
-*/
-html,
-body {
-  height: 100%;
 }
