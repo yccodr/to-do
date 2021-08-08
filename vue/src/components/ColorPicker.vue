@@ -1,7 +1,7 @@
 <template>
-  <div @mouseover="active = true" @mouseleave="active = false">
+  <div>
     <label class="menu-btn"></label>
-    <div v-show="active" class="color-picker">
+    <div class="color-picker">
       <button
         v-for="(color, index) in colors"
         :key="index"
@@ -45,14 +45,23 @@ div {
   height: 1.5em;
 }
 .color-picker {
-  display: flex;
   position: absolute;
-  top: 2.8em;
-  left: -3px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  max-width: 0;
+  background-color: white;
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 0.1px solid gray;
   border-radius: 2em;
   padding: 4px 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+div:hover .color-picker {
+  max-width: 196px;
+  opacity: 100;
 }
 
 .color-picker button {
