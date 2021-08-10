@@ -2,7 +2,7 @@ import colors from './colors';
 
 const ListItemPrototype = {
   setColor(color) {
-    this.color = color;
+    this.item.color = color;
     this.DOM.style.cssText = `--bg-color-checkbox: ${colors[color]}`;
   },
   checkbox(done) {
@@ -10,6 +10,9 @@ const ListItemPrototype = {
     e.id = 'checkbox';
     e.type = 'checkbox';
     e.checked = done;
+    e.addEventListener('input', () => {
+      this.item.done = e.checked;
+    });
 
     return e;
   },
@@ -24,12 +27,20 @@ const ListItemPrototype = {
     e.type = 'text';
     e.placeholder = 'Type Something...';
     e.value = task;
+    e.addEventListener('input', (ev) => {
+      this.item.task = ev.target.value;
+    });
+    e.addEventListener('focusout', (ev) => {
+      if (ev.target.value === '') this.removeItem(this.id);
+    });
 
+    this.entry = e;
     return e;
   },
   colorPicker() {
     const div = document.createElement('div');
     const label = document.createElement('label');
+    label.tabIndex = '0';
     label.classList.add('menu-btn');
     div.classList.add('color-picker');
 
@@ -42,6 +53,7 @@ const ListItemPrototype = {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.style.backgroundColor = value;
+      btn.tabIndex = '-1';
       picker.appendChild(btn);
 
       btn.addEventListener('click', () => {
@@ -63,24 +75,22 @@ const ListItemPrototype = {
     return e;
   },
   compose() {
-    this.DOM.appendChild(this.checkbox(this.done));
+    this.DOM.appendChild(this.checkbox(this.item.done));
     this.DOM.appendChild(this.label());
-    this.DOM.appendChild(this.textInput(this.task));
+    this.DOM.appendChild(this.textInput(this.item.task));
     this.DOM.appendChild(this.colorPicker());
     this.DOM.appendChild(this.delBtn());
   },
 };
 
-export default function ListItem(item, removeItem) {
+export default function ListItem(id, item, removeItem) {
   ListItemPrototype.removeItem = removeItem;
   const obj = Object.create(ListItemPrototype);
 
   obj.DOM = document.createElement('li');
-  obj.DOM.id = item.id;
-  obj.id = item.id;
-  obj.task = item.task;
-  obj.done = item.done;
-  obj.tag = item.tag;
+  obj.DOM.id = id;
+  obj.id = id;
+  obj.item = item;
   obj.setColor(item.color);
 
   obj.compose();
