@@ -27,7 +27,7 @@ input {
 }
 
 .checkbox {
-  border: 1px solid black;
+  border: 0.1em solid var(--bg-color-checkbox);
   border-radius: 50%;
   width: 1.5em;
   height: 1.5em;
