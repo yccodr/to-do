@@ -1,19 +1,14 @@
 import './stylesheets/style.css';
 import './stylesheets/todolist.css';
 import TodoList from './scripts/TodoList';
-import ListItem from './scripts/ListItem';
 
-const todoList = TodoList();
-todoList.list = [
-  {
-    id: 1,
-    task: '',
-    done: false,
-    color: 'default',
-    tag: 'all',
-  },
-];
+const list = [];
 
-todoList.list.forEach((element) => {
-  todoList.allList.append(ListItem(element, (id) => todoList.removeItem(id)).DOM);
+const todoList = TodoList(list);
+todoList.showItem();
+
+window.addEventListener('keyup', (ev) => {
+  if (ev.key === 'Enter') todoList.addItem();
+  if (ev.key === 'Escape') document.activeElement.blur();
+  console.log(ev.key);
 });
