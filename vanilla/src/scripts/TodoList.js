@@ -1,5 +1,13 @@
 const TodoListPrototype = {
   list: [],
+  defaultItem() {
+    return Object.create({
+      task: '',
+      done: false,
+      color: 'default',
+      tag: 'all',
+    });
+  },
   removeItem(id) {
     const idx = this.list.findIndex((e) => e.id === id);
     const e = document.getElementById(id);
