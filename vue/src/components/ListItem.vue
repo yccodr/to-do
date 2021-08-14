@@ -3,7 +3,16 @@
     <input type="checkbox" v-model="isDone" id="isdone" class="checkbox" />
     <label for="isdone"></label>
 
-    <input type="text" name="task-name" v-model="name" placeholder="Type Something..." />
+    <input
+      type="text"
+      name="task-name"
+      v-model="name"
+      @blur="blurHandler"
+      @keyup.enter.prevent="blurEl"
+      @keyup.esc="blurEl"
+      @keydown.shift.delete="del()"
+      placeholder="Type Something..."
+    />
     <color-picker v-model:item-color="__color"></color-picker>
     <button type="button" @click="del()">&#10006;</button>
   </div>
@@ -15,6 +24,9 @@ import ColorPicker from './ColorPicker.vue';
 export default {
   components: { ColorPicker },
   name: 'ListItem',
+  mounted() {
+    this.$el.children[2].focus();
+  },
   props: {
     taskName: String,
     done: Boolean,
@@ -46,6 +58,21 @@ export default {
       set(value) {
         this.$emit('update:color', value);
       },
+    },
+  },
+  methods: {
+    blurEl() {
+      document.activeElement.blur();
+    },
+    blurHandler() {
+      if (this.$props.taskName === '') {
+        this.$props.del();
+      }
+    },
+    delHandler() {
+      if (this.$props.taskName === '') {
+        this.$props.del();
+      }
     },
   },
   data() {

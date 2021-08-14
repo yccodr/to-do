@@ -6,7 +6,7 @@
       v-model:task-name="item.taskName"
       v-model:done="item.done"
       v-model:color="item.color"
-      :del="(index) => delItem(index)"
+      :del="() => delItem(index)"
     ></ListItem>
   </div>
 </template>
@@ -38,7 +38,11 @@ export default {
   },
 
   created() {
-    this.addEmptyItem();
+    window.addEventListener('keyup', (ev) => {
+      if (ev.key === 'Enter') {
+        this.addEmptyItem();
+      }
+    });
   },
 
   methods: {
