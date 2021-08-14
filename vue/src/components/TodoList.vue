@@ -38,7 +38,11 @@ export default {
   },
 
   created() {
-    this.addEmptyItem();
+    window.addEventListener('keyup', (ev) => {
+      if (ev.key === 'Enter') {
+        this.addEmptyItem();
+      }
+    });
   },
 
   methods: {
