@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <label class="menu-btn"></label>
     <div class="color-picker">
       <button
@@ -34,8 +34,8 @@ export default {
 };
 </script>
 
-<style>
-div {
+<style scoped>
+.container {
   position: relative;
 }
 .menu-btn {
@@ -59,7 +59,7 @@ div {
   transition: all 0.3s ease-in-out;
 }
 
-div:hover .color-picker {
+.container:hover .color-picker {
   max-width: 196px;
   opacity: 100;
 }
