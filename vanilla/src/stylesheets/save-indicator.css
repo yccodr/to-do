@@ -1,0 +1,21 @@
+#save-indicator {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  width: 24px;
+  height: 24px;
+}
+
+.save-indicator-done {
+  background: url(../img/cloud_done_black_24dp.svg);
+}
+
+.save-indicator-loading {
+  background: url(../img/sync_black_24dp.svg);
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
