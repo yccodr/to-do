@@ -33,6 +33,9 @@ const ListItemPrototype = {
     e.addEventListener('focusout', (ev) => {
       if (ev.target.value === '') this.removeItem(this.id);
     });
+    e.addEventListener('keydown', (ev) => {
+      if (ev.shiftKey && ev.key === 'Delete') this.removeItem(this.id);
+    });
 
     this.entry = e;
     return e;

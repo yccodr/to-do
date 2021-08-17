@@ -10,5 +10,4 @@ todoList.showItem();
 window.addEventListener('keyup', (ev) => {
   if (ev.key === 'Enter') todoList.addItem();
   if (ev.key === 'Escape') document.activeElement.blur();
-  console.log(ev.key);
 });
