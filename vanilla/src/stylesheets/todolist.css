@@ -95,4 +95,5 @@ input[type="checkbox"]:checked ~ .checkbox {
   width: 1.5em;
   height: 1.5em;
   margin-left: 0.6em;
+  padding: 0;
 }
