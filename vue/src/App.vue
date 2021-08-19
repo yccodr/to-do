@@ -1,14 +1,14 @@
 <template>
   <div>
+    <Header :list="list" />
     <TodoList :list="list" />
-    <SyncIndicator :list="list" />
   </div>
 </template>
 
 <script setup>
 import { provide, reactive } from 'vue';
 import TodoList from './components/TodoList.vue';
-import SyncIndicator from './components/SyncIndicator.vue';
+import Header from './components/Header.vue';
 import colors from './assets/colors';
 
 class Item {
@@ -161,5 +161,17 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* custom */
+html,
+body {
+  height: 100%;
+  background-color: #f2f2f2;
+
+  /* remove space at the top */
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>

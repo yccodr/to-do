@@ -87,6 +87,11 @@ div {
   display: flex;
   align-items: center;
   height: 3.5em;
+  border-bottom: 1px solid #d9d0c1;
+}
+
+div:last-of-type {
+  border: 0;
 }
 
 /* input */
@@ -96,6 +101,7 @@ input {
   margin-left: 0.5em;
   outline: none;
   height: 100%;
+  background-color: inherit;
 }
 
 /* text input */
