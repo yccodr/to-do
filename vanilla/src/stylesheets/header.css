@@ -1,0 +1,50 @@
+/*
+  Header
+*/
+header {
+  background-color: #f2cb05;
+  padding: 0.5em 1em;
+}
+
+.site-title {
+  display: inline-block;
+  color: #fff;
+  font: normal 600 24px/24px monospace;
+  text-decoration: none;
+}
+
+/*
+  Add Button
+*/
+.btn-add {
+  float: right;
+  border: 0;
+  background: 0;
+  font: normal 600 24px/24px monospace;
+  color: #fff;
+  padding: 0;
+  margin-right: 1em;
+}
+
+/*
+  sync indicator
+*/
+#sync-indicator {
+  float: right;
+  width: 24px;
+  height: 24px;
+}
+
+.sync-indicator-done {
+  background: url(../img/cloud_done_black_24dp.svg);
+}
+
+.sync-indicator-loading {
+  background: url(../img/sync_black_24dp.svg);
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
