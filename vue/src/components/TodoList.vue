@@ -31,9 +31,12 @@ export default {
   components: {
     ListItem,
   },
+  props: {
+    list: Array,
+  },
   data() {
     return {
-      items: [],
+      items: this.list,
     };
   },
 
