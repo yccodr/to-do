@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { toRaw } from 'vue';
+
 export default {
   props: ['list'],
   data() {
@@ -21,7 +23,7 @@ export default {
   methods: {
     mockSyncing() {
       this.isLoading = true;
-      console.log(this.list);
+      console.log(toRaw(this.list.items));
       setTimeout(() => {
         this.isLoading = false;
       }, 2000);

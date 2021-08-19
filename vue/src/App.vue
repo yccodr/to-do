@@ -6,10 +6,32 @@
 </template>
 
 <script setup>
+import { provide, reactive } from 'vue';
 import TodoList from './components/TodoList.vue';
 import SyncIndicator from './components/SyncIndicator.vue';
+import colors from './assets/colors';
 
-const list = [];
+class Item {
+  constructor() {
+    this.taskName = '';
+    this.done = false;
+    this.color = colors.default;
+  }
+}
+
+const list = reactive({
+  items: [],
+});
+
+provide('list', list);
+provide('Item', Item);
+provide('colors', colors);
+provide('addEmptyItem', () => {
+  list.items.push(new Item());
+});
+provide('delItem', (index) => {
+  list.items.splice(index, 1);
+});
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md
