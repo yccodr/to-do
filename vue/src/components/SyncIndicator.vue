@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { toRaw } from 'vue';
+
 export default {
   props: ['list'],
   data() {
@@ -21,7 +23,7 @@ export default {
   methods: {
     mockSyncing() {
       this.isLoading = true;
-      console.log(this.list);
+      console.log(toRaw(this.list.items));
       setTimeout(() => {
         this.isLoading = false;
       }, 2000);
@@ -31,21 +33,21 @@ export default {
 </script>
 
 <style>
+/*
+  sync indicator
+*/
 #sync-indicator {
-  position: fixed;
-  top: 1.5em;
-  right: 1.5em;
+  float: right;
   width: 24px;
   height: 24px;
-  padding: 0;
 }
 
 .sync-indicator-done {
-  background: url('../assets/cloud_done_black_24dp.svg');
+  background: url(../assets/cloud_done_black_24dp.svg);
 }
 
 .sync-indicator-loading {
-  background-image: url('../assets/sync_black_24dp.svg');
+  background: url(../assets/sync_black_24dp.svg);
   animation: spin 1.5s linear infinite;
 }
 @keyframes spin {

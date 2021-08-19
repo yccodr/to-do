@@ -12,49 +12,30 @@
 </template>
 
 <script setup>
+import { inject } from 'vue';
 import ListItem from './ListItem.vue';
 </script>
 
 <script>
-import colors from '../assets/colors';
-
-class Item {
-  constructor() {
-    this.taskName = '';
-    this.done = false;
-    this.color = colors.akebono;
-  }
-}
-
 export default {
   name: 'TodoList',
   components: {
     ListItem,
   },
-  props: {
-    list: Array,
-  },
   data() {
     return {
-      items: this.list,
+      items: inject('list').items,
+      delItem: inject('delItem'),
     };
   },
 
   created() {
+    const addEmptyItem = inject('addEmptyItem');
     window.addEventListener('keyup', (ev) => {
       if (ev.key === 'Enter') {
-        this.addEmptyItem();
+        addEmptyItem();
       }
     });
-  },
-
-  methods: {
-    addEmptyItem() {
-      this.items.push(new Item());
-    },
-    delItem(index) {
-      this.items.splice(index, 1);
-    },
   },
 };
 </script>
