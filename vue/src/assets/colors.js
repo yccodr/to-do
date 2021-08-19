@@ -6,7 +6,7 @@ const colors = {
   mizu: '#81c7d4',
   usu: '#b28fce',
   shironezumi: '#bdc0ba',
-  default: '#fff',
+  default: '#ccc',
 };
 
 export default colors;

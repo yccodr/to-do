@@ -113,7 +113,7 @@ input {
   flex: 1;
   height: 1.5em;
   max-width: 1.5em;
-  padding: 1px;
+  padding: 0;
   border-radius: 50%;
   border: 2px var(--bg-color-checkbox) solid;
 }
@@ -129,6 +129,7 @@ button {
   font-size: inherit;
   cursor: pointer;
   background: 0;
+  padding: 0;
   border: 1px solid gray;
   border-radius: 50%;
   height: 1.5em;
