@@ -2,7 +2,7 @@
 .todo-list {
   display: grid;
   max-width: 600px;
-  margin: 1.5em auto;
+  margin: 0.5em auto;
 }
 
 /* list */
@@ -10,6 +10,11 @@ li {
   display: flex;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid #d9d0c1;
+}
+
+li:last-of-type {
+  border: 0;
 }
 
 /* inputs */
@@ -19,6 +24,7 @@ input {
   outline: none;
   margin-left: 0.5em;
   height: 100%;
+  background-color: inherit;
 }
 
 /* checkbox */
