@@ -1,13 +1,13 @@
 const indicator = {
-  DOM: document.getElementById('save-indicator'),
+  DOM: document.getElementById('sync-indicator'),
   init(list) {
     this.list = list;
     this.DOM.addEventListener('click', () => {
-      this.DOM.className = 'save-indicator-loading';
+      this.DOM.className = 'sync-indicator-loading';
       console.log(this.list);
 
       setTimeout(() => {
-        this.DOM.className = 'save-indicator-done';
+        this.DOM.className = 'sync-indicator-done';
       }, 2000);
     });
   },
