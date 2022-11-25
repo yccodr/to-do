@@ -1,13 +1,19 @@
 import './stylesheets/style.css';
 import './stylesheets/todolist.css';
 import './stylesheets/header.css';
+import DB from './scripts/indexedDB';
 import TodoList from './scripts/TodoList';
 import indicator from './scripts/SyncIndicator';
 
 const list = [];
+const currentList = 'all';
 
-const todoList = TodoList(list);
-todoList.showItem();
+const db = new DB('todo', 1, {
+  list: '++id, name, color, category, isDone',
+});
+
+const todoList = TodoList(db);
+// todoList.showItem();
 
 indicator.init(list);
 

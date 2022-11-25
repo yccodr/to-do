@@ -4,14 +4,16 @@ const ListItemPrototype = {
   setColor(color) {
     this.item.color = color;
     this.DOM.style.cssText = `--bg-color-checkbox: ${colors[color]}`;
+    this.callback('update-color', this.id, color);
   },
-  checkbox(done) {
+  checkbox(isDone) {
     const e = document.createElement('input');
     e.id = 'checkbox';
     e.type = 'checkbox';
-    e.checked = done;
+    e.checked = isDone;
     e.addEventListener('input', () => {
-      this.item.done = e.checked;
+      this.item.isDone = e.checked;
+      this.callback('update-status', this.id, e.checked);
     });
 
     return e;
@@ -22,19 +24,19 @@ const ListItemPrototype = {
     e.classList.add('checkbox');
     return e;
   },
-  textInput(task) {
+  textInput(name) {
     const e = document.createElement('input');
     e.type = 'text';
     e.placeholder = 'Type Something...';
-    e.value = task;
+    e.value = name;
     e.addEventListener('input', (ev) => {
-      this.item.task = ev.target.value;
+      this.callback('update-name', this.id, ev.target.value);
     });
     e.addEventListener('focusout', (ev) => {
-      if (ev.target.value === '') this.removeItem(this.id);
+      if (ev.target.value === '') this.callback('remove', this.id);
     });
     e.addEventListener('keydown', (ev) => {
-      if (ev.shiftKey && ev.key === 'Delete') this.removeItem(this.id);
+      if (ev.shiftKey && ev.key === 'Delete') this.callback('remove', this.id);
     });
 
     this.entry = e;
@@ -72,22 +74,22 @@ const ListItemPrototype = {
     e.classList.add('delBtn');
     e.innerHTML = '&#10006;';
     e.addEventListener('click', () => {
-      this.removeItem(this.id);
+      this.callback('remove', this.id);
     });
 
     return e;
   },
   compose() {
-    this.DOM.appendChild(this.checkbox(this.item.done));
+    this.DOM.appendChild(this.checkbox(this.item.isDone));
     this.DOM.appendChild(this.label());
-    this.DOM.appendChild(this.textInput(this.item.task));
+    this.DOM.appendChild(this.textInput(this.item.name));
     this.DOM.appendChild(this.colorPicker());
     this.DOM.appendChild(this.delBtn());
   },
 };
 
-export default function ListItem(id, item, removeItem) {
-  ListItemPrototype.removeItem = removeItem;
+export default function ListItem(id, item, callback) {
+  ListItemPrototype.callback = callback;
   const obj = Object.create(ListItemPrototype);
 
   obj.DOM = document.createElement('li');

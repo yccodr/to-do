@@ -3,22 +3,22 @@ import ListItem from './ListItem';
 const TodoListPrototype = {
   list: [],
   defaultItem() {
-    return Object.create({
-      task: '',
-      done: false,
+    return {
+      name: '',
       color: 'default',
-      tag: 'all',
-    });
+      category: 'all',
+      isDone: false,
+    };
   },
   showItem() {
     this.list.forEach((v, k) => {
       this.allList.append(ListItem(k, v, (id) => this.removeItem(id)).DOM);
     });
   },
-  addItem(di = this.defaultItem()) {
-    const li = ListItem(this.list.length, di, (id) => this.removeItem(id));
+  async addItem(di = this.defaultItem()) {
+    const id = await this.db.addData('list', di);
+    const li = ListItem(id, di, this.updateFn.bind(this));
 
-    this.list.push(di);
     this.allList.append(li.DOM);
     li.entry.focus();
   },
@@ -26,11 +26,27 @@ const TodoListPrototype = {
     const e = document.getElementById(id);
 
     e.remove();
-    this.list.splice(id, 1);
+    this.db.deleteDataById('list', id);
+  },
+  updateColor(id, color) {
+    this.db.updateDataById('list', id, { color });
+  },
+  updateName(id, name) {
+    this.db.updateDataById('list', id, { name });
+  },
+  updateStatus(id, status) {
+    this.db.updateDataById('list', id, { isDone: status });
+  },
+  updateFn(action, id, value = undefined) {
+    if (action === 'remove') this.removeItem(id);
+    else if (action === 'update-color') this.updateColor(id, value);
+    else if (action === 'update-name') this.updateName(id, value);
+    else if (action === 'update-status') this.updateStatus(id, value);
+    else console.error('undefined action');
   },
 };
 
-export default function TodoList(list) {
+export default function TodoList(db) {
   const obj = Object.create(TodoListPrototype);
 
   const app = document.getElementById('app');
@@ -38,10 +54,17 @@ export default function TodoList(list) {
   div.classList.add('todo-list');
   app.appendChild(div);
 
-  obj.list = list;
   obj.allList = document.createElement('ul');
   obj.allList.id = 'all';
   div.appendChild(obj.allList);
+
+  obj.db = db;
+  db.findAllOrderedById('list').then((array) => {
+    array.forEach((item) => {
+      const li = ListItem(item.id, item, obj.updateFn.bind(obj));
+      obj.allList.appendChild(li.DOM);
+    });
+  });
 
   return obj;
 }
