@@ -7,12 +7,23 @@
     <title>Vite App</title>
   </head>
   <body>
-    <header class="clearfix">
-      <a href="." class="site-title">Todo List</a>
-      <div class="sync-indicator-done" id="sync-indicator"></div>
-      <button type="button" class="btn-add" id="btn-add">&#43;</button>
+    <header>
+      <span class="header__left">
+        <a href="." class="site-title">Todo List</a>
+      </span>
+
+      <span class="header__right">
+        <div class="sync-indicator-done" id="sync-indicator"></div>
+        <button type="button" class="btn-add" id="btn-add">&#43;</button>
+      </span>
     </header>
     <main>
+      <div class="sidebar">
+        <div class="list">
+          <button type="button" class="btn-add" id="btn-list-add">&#43;</button>
+        </div>
+        <button type="button" class="btn-new-cate">New Category</button>
+      </div>
       <div id="app"></div>
       <script type="module" src="/main.js"></script>
     </main>

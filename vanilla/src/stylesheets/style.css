@@ -132,13 +132,22 @@ table {
 /* custom */
 html,
 body {
-  height: 100%;
-  background-color: #f2f2f2;
+  min-height: 100vh;
+  background-color: #eee;
+}
 
-  /* remove space at the top */
-  position: absolute;
-  width: 100%;
-  margin: 0 auto;
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
+}
+
+main {
+  display: flex;
+  flex: 1;
 }
 
 .clearfix::before,
