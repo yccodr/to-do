@@ -25,6 +25,17 @@ jobs:
       - name: "build vue"
         working-directory: ./vue
         run: yarn && yarn build
+
+      - name: Setup Firebase
+        run: yarn -g install firebase-tools
+
+      - name: "Setup target 'todo'"
+        run: "firebase target:apply hosting todo ${{ secrets.TARGET_TODO }}"
+      - name: "Setup target 'vanilla'"
+        run: "firebase target:apply hosting vanilla ${{ secrets.TARGET_VANILLA }}"
+      - name: "Setup target 'vue'"
+        run: "firebase target:apply hosting vue ${{ secrets.TARGET_VUE }}"
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
