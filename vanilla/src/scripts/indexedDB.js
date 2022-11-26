@@ -11,6 +11,10 @@ export default class DB {
     return this.db.table(storeName).put(data);
   }
 
+  async getUniqueKeys(storeName, keyName) {
+    return this.db.table(storeName).orderBy(keyName).uniqueKeys();
+  }
+
   updateDataById(storeName, id, data) {
     this.db.table(storeName).update(id, data);
   }

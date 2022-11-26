@@ -3,32 +3,71 @@
   position: relative;
   width: 300px;
   background-color: #fff;
-  padding: 20px;
   justify-content: center;
 }
 
-.list {
+.task-list {
   display: flex;
+  flex-direction: column;
   flex: 1;
   justify-content: space-between;
   line-height: 24px;
 }
 
-.btn-new-cate {
-  width: 250px;
-  height: 50px;
+.task-list ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list li {
+  padding: 10px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.task-list .task-list__selected {
+  background-color: #eee;
+}
+
+.list-new {
   position: absolute;
   bottom: 1rem;
+  display: grid;
+  grid-template-rows: 3fr 2fr;
+  align-items: center;
+}
+
+.list-new input {
+  margin: 0;
+}
+
+#new-list-form {
+  visibility: hidden;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  padding: 20px 10px;
+}
+
+#new-list-form:focus-within {
+  visibility: visible;
+}
+
+.btn-new-list {
+  width: 250px;
+  height: 50px;
   border: 4px solid #f2f2f2;
   border-radius: 16px;
   background-color: #f2f2f2;
 }
 
-.btn-new-cate:hover {
+.btn-new-list:hover {
   background-color: transparent;
   cursor: pointer;
 }
 
-.btn-new-cate:active {
+.btn-new-list:active {
   bottom: calc(1rem - 2px);
 }

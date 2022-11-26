@@ -27,6 +27,7 @@ const ListItemPrototype = {
   textInput(name) {
     const e = document.createElement('input');
     e.type = 'text';
+    e.className = 'task-input';
     e.placeholder = 'Type Something...';
     e.value = name;
     e.addEventListener('input', (ev) => {

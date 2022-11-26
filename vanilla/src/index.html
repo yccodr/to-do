@@ -19,10 +19,18 @@
     </header>
     <main>
       <div class="sidebar">
-        <div class="list">
-          <button type="button" class="btn-add" id="btn-list-add">&#43;</button>
+        <nav class="task-list">
+          <ul></ul>
+        </nav>
+        <div class="list-new">
+          <form id="new-list-form">
+            <input type="form" id="new-list-input" />
+            <button type="submit" id="new-list-ok">OK</button>
+          </form>
+          <button type="button" class="btn-new-list" id="btn-list">
+            New Category
+          </button>
         </div>
-        <button type="button" class="btn-new-cate">New Category</button>
       </div>
       <div id="app"></div>
       <script type="module" src="/main.js"></script>
