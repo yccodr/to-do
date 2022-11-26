@@ -27,7 +27,7 @@ jobs:
         run: yarn && yarn build
 
       - name: Setup Firebase
-        run: yarn -g install firebase-tools
+        run: npm -g install firebase-tools
 
       - name: "Setup target 'todo'"
         run: "firebase target:apply hosting todo ${{ secrets.TARGET_TODO }}"
