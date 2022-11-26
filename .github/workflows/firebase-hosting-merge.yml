@@ -11,12 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Setup Yarn
+        run: npm install -g yarn
+      - name: Setup Nodejs with Yarn caching
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: yarn
+
       - name: "build vanilla"
         working-directory: ./vanilla
-        run: npm ci && npm run build
+        run: yarn && yarn build
       - name: "build vue"
         working-directory: ./vue
-        run: npm ci && npm run build
+        run: yarn && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
