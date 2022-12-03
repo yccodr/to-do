@@ -9,9 +9,9 @@ import Card from "../components/Card.astro";
 			Hi. Welcome to the <span class="text-gradient">ToDo app.</span>
 		</h1>
 		<p class="instructions">
-			I created this app with different frameworks, trying to make it as
+			I created this app with different frameworks, trying to make them as
 			similar as possible.<br />
-			Feel free to check them out.
+			Check them out!
 		</p>
 		<ul role="list" class="link-card-grid">
 			<Card
@@ -32,7 +32,7 @@ import Card from "../components/Card.astro";
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 60ch;
+		max-width: 120ch;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -52,11 +52,12 @@ import Card from "../components/Card.astro";
 	}
 	.instructions {
 		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
+		font-size: 1.2rem;
+		/* margin: 1rem 0; */
+		/* border: 1px solid rgba(var(--accent), 25%); */
+		/* background-color: white; */
+		/* padding: 1rem; */
+		/* border-radius: 0.4rem; */
 	}
 	.instructions code {
 		font-size: 0.875em;
@@ -71,7 +72,7 @@ import Card from "../components/Card.astro";
 	}
 	.link-card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		grid-template-columns: repeat(auto-fit, 20ch);
 		gap: 1rem;
 		padding: 0;
 	}
