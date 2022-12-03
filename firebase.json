@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "todo",
-      "public": "public",
+      "public": "intro/dist",
       "ignore": [
         "firebase.json",
         "**/.*",
